@@ -79,9 +79,12 @@ class AnnularMarkerView:UIView{
     }
   }
   
+  var annularWidth :CGFloat {
+    return longMarkerSize + markerPaddingIn + markerPaddingOut
+  }
+  
   override func drawRect(rect: CGRect) {
     super.drawRect(rect)
-    let annularWidth = longMarkerSize + markerPaddingIn + markerPaddingOut
     
     let inset = annularWidth * 0.5
     let annularPath = UIBezierPath(ovalInRect: rect.insetBy(dx: inset, dy: inset))

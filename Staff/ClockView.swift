@@ -8,6 +8,14 @@
 
 import Foundation
 
+struct ClockOptions{
+  static let progressWidth:CGFloat = sdp2dp(230)
+  static let markerWidth :CGFloat = sdp2dp(316)
+  static let longMarkerSize: CGFloat = sdp2dp(30)
+  static let shortMarkerSize : CGFloat = sdp2dp(15)
+  static let progressLineWidth : CGFloat = sdp2dp(15)
+}
+
 // Build for target uimodel
 import UIKit
 import BXModel
@@ -57,17 +65,20 @@ class ClockView : UIView  ,BXBindable {
     installConstaints()
     setupAttrs()
     
+    markerView.longMarkerSize = ClockOptions.longMarkerSize
+    markerView.shortMarkerSize = ClockOptions.shortMarkerSize
+    progressView.lineWidth = ClockOptions.progressLineWidth
   }
   
   func installConstaints(){
     progressView.pa_centerY.install()
     progressView.pa_centerX.install()
     progressView.pa_aspectRatio(1).install()
-    progressView.pa_width.eq(230).install()
+    progressView.pa_width.eq(ClockOptions.progressWidth).install()
     markerView.pa_aspectRatio(1).install()
     markerView.pa_bottom.eq(8).install()
     markerView.pa_top.eq(8).install()
-    markerView.pa_width.eq(316).install()
+    markerView.pa_width.eq(ClockOptions.markerWidth).install()
     markerView.pa_centerY.install()
     markerView.pa_centerX.install()
   }
