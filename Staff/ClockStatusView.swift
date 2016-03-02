@@ -30,6 +30,8 @@ class ClockStatusView : UIView  ,BXBindable {
   let clockButton = OvalButton(frame: CGRectZero)
   
   
+  var isFirstShow  = true
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     commonInit()
@@ -39,8 +41,9 @@ class ClockStatusView : UIView  ,BXBindable {
     worked_timeLabel.attributedText = item.worked_time_text
     need_timeLabel.attributedText  = item.need_time_text
     off_timeLabel.attributedText = item.off_time_text
-    if isWorking && timerInterval > 10 {
+    if (isWorking && timerInterval > 10) || isFirstShow {
       clockView.bind(CGFloat(item.progress))
+      isFirstShow = false
     }
   }
   
@@ -164,6 +167,7 @@ class ClockStatusView : UIView  ,BXBindable {
   func startTimer(){
     stopTimer()
     timer = NSTimer.scheduledTimerWithTimeInterval(timerInterval, target: self, selector: "onTimerCallback", userInfo: nil, repeats: true)
+    autobind()
   }
   
   func stopTimer(){
