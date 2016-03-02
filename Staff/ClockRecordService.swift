@@ -131,9 +131,9 @@ extension ClockRecordService{
   func recordsInDate(date:NSDate) -> [ClockRecord]{
     let calendar = NSCalendar.currentCalendar()
     return all().filter{ calendar.isDate($0.clock_time, inSameDayAsDate: date) }
-//      .sort{ (l,r) -> Bool in
-//      return l.clock_time.isBefore(r.clock_time)
-//    }
+      .sort{ (l,r) -> Bool in
+      return l.clock_time.isBefore(r.clock_time)
+    }
 
   }
   
