@@ -142,7 +142,12 @@ class ClockRecordEditorViewController : UITableViewController {
     
     clockRecord.updateClockTime(date)
     clockRecord.updateType(type)
-    ClockRecordService.sharedService.update(clockRecord)
+    if clockRecord.id > 0 {
+      ClockRecordService.sharedService.update(clockRecord)
+    }else{
+      ClockRecordService.sharedService.add(clockRecord)
+    }
+    
     NSNotificationCenter.defaultCenter().postNotificationName(AppEvents.ClockDataSetChanged, object: nil)
     bx_closeSelf()
   }
