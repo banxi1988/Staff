@@ -54,15 +54,15 @@ class FirstRecordCell : ClockRecordCell{
     return [weekdayLabel,dayLabel,timeLabel,typeLabel,worked_timeLabel]
   }
   
-  override func commonInit(){
-    for childView in allOutlets{
-      contentView.addSubview(childView)
-      childView.translatesAutoresizingMaskIntoConstraints = false
-    }
-    installConstaints()
-    setupAttrs()
-    
-  }
+//  override func commonInit(){
+//    for childView in allOutlets{
+//      contentView.addSubview(childView)
+//      childView.translatesAutoresizingMaskIntoConstraints = false
+//    }
+//    installConstaints()
+//    setupAttrs()
+//    
+//  }
   
   override func installConstaints(){
     super.installConstaints()
