@@ -17,7 +17,7 @@ import BXForm
 
 //-ClockRecordListViewController(m=ClockRecord,adapter=c):cvc
 
-class ClockRecordListViewController : UICollectionViewController,UICollectionViewDelegateFlowLayout {
+class ClockRecordListViewController : UICollectionViewController,UICollectionViewDelegateFlowLayout{
   
   init(){
     super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -149,17 +149,20 @@ class ClockRecordListViewController : UICollectionViewController,UICollectionVie
   
   override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let item = recordAtIndexPath(indexPath)
-    if item.isFirstRecordOfDay{
-     let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CellIdentifiers.firstRecordCell, forIndexPath: indexPath) as! FirstRecordCell
-      cell.bind(item)
-      return cell
-    }else{
-     let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CellIdentifiers.recordCell, forIndexPath: indexPath) as! ClockRecordCell
-      cell.bind(item)
-      return cell
-    }
+    let identifier = item.isFirstRecordOfDay ? CellIdentifiers.firstRecordCell : CellIdentifiers.recordCell
+   let cell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as! ClockRecordCell
+    cell.bind(item)
     
+    // swipe
+    
+    let swipeGestureRecognizer = UIPanGestureRecognizer(target: cell, action: "handlePanGesture:")
+    cell.addGestureRecognizer(swipeGestureRecognizer)
+    swipeGestureRecognizer.delegate = cell
+    collectionView.panGestureRecognizer.requireGestureRecognizerToFail(swipeGestureRecognizer)
+    cell.delegate = self
+    return cell
   }
+  
   
   // MARK: Delegate
  
@@ -175,6 +178,26 @@ class ClockRecordListViewController : UICollectionViewController,UICollectionVie
   
   
   
+}
+
+extension ClockRecordListViewController: ClockRecordCellDelegate{
+  func deleteRecord(record:ClockRecord){
+    if let index = records.indexOf(record){
+      records.removeAtIndex(index)
+      ClockRecordService.sharedService.delete(record)
+      let indexPath = NSIndexPath(forItem: index, inSection: 0)
+      collectionView?.deleteItemsAtIndexPaths([indexPath])
+      loadData()
+    }
+    
+  }
+  
+  
+  func clockRecordCell(cell: ClockRecordCell, deleteClockRecord record: ClockRecord) {
+    bx_prompt("确定删除这条打卡记录?"){ sure in
+      self.deleteRecord(record)
+    }
+  }
 }
 
 

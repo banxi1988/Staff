@@ -148,6 +148,9 @@ class ClockRecordEditorViewController : UITableViewController {
       ClockRecordService.sharedService.add(clockRecord)
     }
     
+    if calendar.isDateInToday(date){
+      NSNotificationCenter.defaultCenter().postNotificationName(AppEvents.Clocked, object: nil)
+    }
     NSNotificationCenter.defaultCenter().postNotificationName(AppEvents.ClockDataSetChanged, object: nil)
     bx_closeSelf()
   }

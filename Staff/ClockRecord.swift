@@ -109,12 +109,10 @@ class ClockRecord:BXModel {
   
   func updateType(type:ClockRecordType){
     self.type = type.typeValue
-//    ClockRecordService.sharedService.update(self)
   }
   
   func updateClockTime(time:NSDate){
     self.clock_time = time
-//    ClockRecordService.sharedService.update(self)
   }
   
   var isFirstRecordOfDay = false
@@ -125,5 +123,13 @@ extension ClockRecord{
   var recordType:ClockRecordType{
     return ClockRecordType(rawValue: type)!
   }
+}
+
+extension ClockRecord: Equatable{
+  
+}
+
+func ==(lhs:ClockRecord,rhs:ClockRecord) -> Bool{
+  return lhs.id == rhs.id
 }
     
