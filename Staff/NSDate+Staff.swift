@@ -11,7 +11,7 @@ import Foundation
 private let weekday_chars  = "日一二三四五六".characters.map{String($0)}
 extension NSDate{
   var zhStandaloneWeekday:String{
-      return weekday_chars[weekday]
+      return weekday_chars[weekday-1]
   }
   
   var zhShortWeekday:String{

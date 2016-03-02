@@ -72,6 +72,14 @@ class ClockStatusView : UIView  ,BXBindable {
     setupAttrs()
     autobind()
     
+    NSNotificationCenter.defaultCenter().addObserverForName(AppEvents.WorkDurationChanged, object: nil, queue: nil) { (notif) -> Void in
+      self.autobind()
+    }
+    
+  }
+  
+  deinit{
+    NSNotificationCenter.defaultCenter().removeObserver(self)
   }
   
   func installConstaints(){

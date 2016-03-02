@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
     setupLog()
     setUpAppearanceProxy()
+    AppUserDefaults.registerDefaults()
     start()
     return true
   }

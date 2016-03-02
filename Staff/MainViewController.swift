@@ -109,7 +109,8 @@ class MainViewController : UIViewController {
   }
  
   func onSettingsButtonPressed(sender:AnyObject){
-    
+    let vc = SettingsViewController()
+    showViewController(vc, sender: self)
   }
   
   

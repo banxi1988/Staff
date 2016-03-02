@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-let workTimeIntevalStandard :NSTimeInterval = 3600  * 8
 let calendar = NSCalendar.currentCalendar()
 
 struct ClockStatus{
   let worked_seconds:NSTimeInterval
+  let workTimeIntevalStandard = AppUserDefaults.workDuration.asSeconds
   
   init(seconds:NSTimeInterval){
     self.worked_seconds = seconds

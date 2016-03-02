@@ -20,6 +20,8 @@
 		3E91CA591C85C5750065CA49 /* ClockRecordEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E91CA581C85C5750065CA49 /* ClockRecordEditorViewController.swift */; };
 		3E91CA5B1C85E8AB0065CA49 /* FirstRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E91CA5A1C85E8AB0065CA49 /* FirstRecordCell.swift */; };
 		3E91CA5D1C85ECE50065CA49 /* NSDate+Staff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E91CA5C1C85ECE50065CA49 /* NSDate+Staff.swift */; };
+		3E91CA611C86D0010065CA49 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E91CA601C86D0010065CA49 /* SettingsViewController.swift */; };
+		3E91CA631C86D8390065CA49 /* AppUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E91CA621C86D8390065CA49 /* AppUserDefaults.swift */; };
 		3EA1709A1C8538CE008FA446 /* SQLite+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA170981C8538CE008FA446 /* SQLite+JSON.swift */; };
 		3EA1709B1C8538CE008FA446 /* SQLite+NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA170991C8538CE008FA446 /* SQLite+NSURL.swift */; };
 		3EA1709D1C8539B3008FA446 /* ClockRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA1709C1C8539B3008FA446 /* ClockRecord.swift */; };
@@ -77,6 +79,8 @@
 		3E91CA581C85C5750065CA49 /* ClockRecordEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockRecordEditorViewController.swift; sourceTree = "<group>"; };
 		3E91CA5A1C85E8AB0065CA49 /* FirstRecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstRecordCell.swift; sourceTree = "<group>"; };
 		3E91CA5C1C85ECE50065CA49 /* NSDate+Staff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Staff.swift"; sourceTree = "<group>"; };
+		3E91CA601C86D0010065CA49 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		3E91CA621C86D8390065CA49 /* AppUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUserDefaults.swift; sourceTree = "<group>"; };
 		3EA170981C8538CE008FA446 /* SQLite+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQLite+JSON.swift"; sourceTree = "<group>"; };
 		3EA170991C8538CE008FA446 /* SQLite+NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQLite+NSURL.swift"; sourceTree = "<group>"; };
 		3EA1709C1C8539B3008FA446 /* ClockRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockRecord.swift; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 				3E177E1B1C83E88300AB1815 /* MainViewController.swift */,
 				3E898D131C8596D800152D56 /* ClockRecordListViewController.swift */,
 				3E91CA581C85C5750065CA49 /* ClockRecordEditorViewController.swift */,
+				3E91CA601C86D0010065CA49 /* SettingsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 				3E177E221C83E88300AB1815 /* LaunchScreen.storyboard */,
 				3E177E251C83E88300AB1815 /* Info.plist */,
 				3E898D0F1C858C6700152D56 /* AppEvents.swift */,
+				3E91CA621C86D8390065CA49 /* AppUserDefaults.swift */,
 			);
 			name = "Support Files";
 			sourceTree = "<group>";
@@ -539,6 +545,8 @@
 				3EA170AB1C854837008FA446 /* AnnularMarkerView.swift in Sources */,
 				3E898D161C859C0900152D56 /* ClockRecordCell.swift in Sources */,
 				3EA1709A1C8538CE008FA446 /* SQLite+JSON.swift in Sources */,
+				3E91CA611C86D0010065CA49 /* SettingsViewController.swift in Sources */,
+				3E91CA631C86D8390065CA49 /* AppUserDefaults.swift in Sources */,
 				3EA1709D1C8539B3008FA446 /* ClockRecord.swift in Sources */,
 				3E898D141C8596D800152D56 /* ClockRecordListViewController.swift in Sources */,
 				3EA170A91C8547D0008FA446 /* AnnularProgressView.swift in Sources */,
