@@ -109,6 +109,7 @@ class SettingsViewController : UITableViewController {
     picker.onSelectOption = { option in
       AppUserDefaults.workDuration = option
       self.autobind()
+      NSNotificationCenter.defaultCenter().postNotificationName(AppEvents.WorkDurationChanged, object: nil)
     }
     presentViewController(picker, animated: true, completion: nil)
   }
