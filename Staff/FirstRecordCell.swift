@@ -36,6 +36,12 @@ class FirstRecordCell : ClockRecordCell{
     weekdayLabel.text  = date.zhShortWeekday
     dayLabel.text  = date.bx_shortDateString
     super.bind(item)
+    bx_async{
+      let clockStatus = ClockRecordHelper.clockStatusInDate(date)
+      bx_runInUiThread{
+        self.worked_timeLabel.text = "上班时长:" + clockStatus.worked_time
+      }
+    }
   }
   
   override func awakeFromNib() {
