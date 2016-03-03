@@ -124,12 +124,12 @@ class ClockRecordListViewController : UICollectionViewController,UICollectionVie
     return recordDateRanges[section]
   }
   
-  func recordsOfIndexPath(section:Int) -> [ClockRecord]{
+  func recordsOfSection(section:Int) -> [ClockRecord]{
     return recordDateRangeAtSection(section).records
   }
   
   func recordAtIndexPath(indexPath:NSIndexPath) -> ClockRecord{
-    let records = recordsOfIndexPath(indexPath.section)
+    let records = recordsOfSection(indexPath.section)
     return records[indexPath.item]
   }
   
@@ -138,7 +138,7 @@ class ClockRecordListViewController : UICollectionViewController,UICollectionVie
   }
   
   func numberOfItemsInSection(section:Int) -> Int {
-    return recordsOfIndexPath(section).count
+    return recordsOfSection(section).count
   }
   // MARK: DataSource
   
@@ -205,6 +205,10 @@ extension ClockRecordListViewController: ClockRecordCellDelegate{
   func deleteRecordAtIndexPath(indexPath:NSIndexPath){
       let record = recordAtIndexPath(indexPath)
       ClockRecordService.sharedService.delete(record)
+      let records = recordsOfSection(indexPath.section)
+      if let index = records.indexOf(record){
+         recordDateRangeAtSection(indexPath.section).records.removeAtIndex(index)
+      }
       collectionView?.deleteItemsAtIndexPaths([indexPath])
       loadData()
   }
