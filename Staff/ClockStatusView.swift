@@ -41,9 +41,10 @@ class ClockStatusView : UIView  ,BXBindable {
     worked_timeLabel.attributedText = item.worked_time_text
     need_timeLabel.attributedText  = item.need_time_text
     off_timeLabel.attributedText = item.off_time_text
-    if (isWorking && timerInterval > 10) || isFirstShow {
+    if (isWorking && timerInterval > 10) || isFirstShow || isClockEvent {
       clockView.bind(CGFloat(item.progress))
       isFirstShow = false
+      isClockEvent = false
     }
   }
   
@@ -143,8 +144,10 @@ class ClockStatusView : UIView  ,BXBindable {
     bind(status)
   }
   
+  var isClockEvent = false
   func onClockButtonPressed(sender:AnyObject){
      ClockRecordHelper.clock()
+    isClockEvent = true
     autobind()
   }
   
