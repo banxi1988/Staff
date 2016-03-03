@@ -37,6 +37,8 @@
 		3EA170B11C85572C008FA446 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA170B01C85572C008FA446 /* AppAppearance.swift */; };
 		3EA170B31C855796008FA446 /* ClockStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA170B21C855796008FA446 /* ClockStatus.swift */; };
 		3EA170B51C8574CC008FA446 /* ClockRecordHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA170B41C8574CC008FA446 /* ClockRecordHelper.swift */; };
+		3EF0D4EF1C87EBA700872085 /* RecordDateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF0D4EE1C87EBA700872085 /* RecordDateRange.swift */; };
+		3EF0D4F11C88069300872085 /* RecordDateRangeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF0D4F01C88069300872085 /* RecordDateRangeHeaderView.swift */; };
 		8DE52F10ADADBE8E40D52A63 /* Pods_StaffUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F58759C596F87287A8EB44 /* Pods_StaffUITests.framework */; };
 		9B60226793423FE20F15045C /* Pods_Staff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA287435A4A25BE4D000B23 /* Pods_Staff.framework */; };
 		E77DE59392C43990D347928C /* Pods_StaffTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A4846A3A5240BD5C35BE1C /* Pods_StaffTests.framework */; };
@@ -99,6 +101,8 @@
 		3EA170B01C85572C008FA446 /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		3EA170B21C855796008FA446 /* ClockStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockStatus.swift; sourceTree = "<group>"; };
 		3EA170B41C8574CC008FA446 /* ClockRecordHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockRecordHelper.swift; sourceTree = "<group>"; };
+		3EF0D4EE1C87EBA700872085 /* RecordDateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDateRange.swift; sourceTree = "<group>"; };
+		3EF0D4F01C88069300872085 /* RecordDateRangeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDateRangeHeaderView.swift; sourceTree = "<group>"; };
 		3FA287435A4A25BE4D000B23 /* Pods_Staff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Staff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F58759C596F87287A8EB44 /* Pods_StaffUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StaffUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F0F23BC7070BB38B1443122 /* Pods-StaffTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StaffTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StaffTests/Pods-StaffTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -227,6 +231,7 @@
 				3EA170B41C8574CC008FA446 /* ClockRecordHelper.swift */,
 				3E91CA5C1C85ECE50065CA49 /* NSDate+Staff.swift */,
 				3E91CA641C87D24F0065CA49 /* SQLite+NSDate.swift */,
+				3EF0D4EE1C87EBA700872085 /* RecordDateRange.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 				3EA170AE1C8553FA008FA446 /* ClockStatusView.swift */,
 				3E898D151C859C0900152D56 /* ClockRecordCell.swift */,
 				3E91CA5A1C85E8AB0065CA49 /* FirstRecordCell.swift */,
+				3EF0D4F01C88069300872085 /* RecordDateRangeHeaderView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -553,9 +559,11 @@
 				3E91CA631C86D8390065CA49 /* AppUserDefaults.swift in Sources */,
 				3EA1709D1C8539B3008FA446 /* ClockRecord.swift in Sources */,
 				3E898D141C8596D800152D56 /* ClockRecordListViewController.swift in Sources */,
+				3EF0D4EF1C87EBA700872085 /* RecordDateRange.swift in Sources */,
 				3EA170A91C8547D0008FA446 /* AnnularProgressView.swift in Sources */,
 				3EA1709B1C8538CE008FA446 /* SQLite+NSURL.swift in Sources */,
 				3EA170B31C855796008FA446 /* ClockStatus.swift in Sources */,
+				3EF0D4F11C88069300872085 /* RecordDateRangeHeaderView.swift in Sources */,
 				3E177E1A1C83E88300AB1815 /* AppDelegate.swift in Sources */,
 				3EA170B51C8574CC008FA446 /* ClockRecordHelper.swift in Sources */,
 			);

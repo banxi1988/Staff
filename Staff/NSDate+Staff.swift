@@ -39,5 +39,36 @@ extension NSCalendar{
     return dateFromComponents(comps)!
   }
   
+  func bx_endDayOfDate(date:NSDate) -> NSDate{
+    let comps = components([.Year,.Month,.Day], fromDate: date)
+    comps.hour = 24
+    return dateFromComponents(comps)!
+  }
+  
+  func bx_mondayInWeek(date:NSDate) -> NSDate{
+    let comps = components([.Year,.WeekOfYear,.Weekday], fromDate: date)
+    comps.weekday = 2 // monday
+    return dateFromComponents(comps)!
+  }
+  
+  func bx_sundayInWeek(date:NSDate, mondayAsFirstDay : Bool = true) -> NSDate{
+    let comps = components([.Year,.WeekOfYear,.Weekday], fromDate: date)
+    comps.weekday = 1 // monday
+    if mondayAsFirstDay{
+      comps.weekOfYear = comps.weekOfYear + 1
+    }
+    comps.hour = 24
+    return dateFromComponents(comps)!
+  }
+
+  func bx_nextMonthDate(date:NSDate) -> NSDate{
+    return calendar.dateByAddingUnit(.Month, value: 1, toDate: date, options: [])!
+  }
+  
+  func bx_prevMonthDate(date:NSDate) -> NSDate{
+    return calendar.dateByAddingUnit(.Month, value: -1, toDate: date, options: [])!
+  }
+
+  
   
 }

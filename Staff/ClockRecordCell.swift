@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ClockRecordCellDelegate{
-  func clockRecordCell(cell:ClockRecordCell,deleteClockRecord record:ClockRecord)
+  func clockRecordCell(cell:ClockRecordCell,deleteAtIndexPath indexPath:NSIndexPath)
 }
 
 // Build for target uimodel
@@ -36,6 +36,7 @@ class ClockRecordCell : UICollectionViewCell  ,BXBindable, UIGestureRecognizerDe
   }
   
   var item:ClockRecord?
+  var indexPath:NSIndexPath?
   func bind(item:ClockRecord){
     self.item = item
     timeLabel.text  = item.clock_time.bx_shortTimeString
@@ -169,12 +170,11 @@ class ClockRecordCell : UICollectionViewCell  ,BXBindable, UIGestureRecognizerDe
   var delegate:ClockRecordCellDelegate?
   
   func onDeleteButtonPressed(sender:AnyObject){
-    guard let item = self.item else {
+    guard let indexPath = self.indexPath else {
       return
     }
     self.swipe_rollback()
-    self.delegate?.clockRecordCell(self, deleteClockRecord: item)
-    
+    self.delegate?.clockRecordCell(self, deleteAtIndexPath: indexPath)
   }
   
 }

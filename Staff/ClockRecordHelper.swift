@@ -23,10 +23,10 @@ struct ClockRecordHelper {
     return clockStatusInDate(NSDate())
   }
   
-  static func clockStatusInDate(date:NSDate) -> ClockStatus{
+  static func workedTimeSecondsInDate(date:NSDate) -> NSTimeInterval{
     var records = ClockRecordService.sharedService.recordsInDate(date)
     if records.isEmpty{
-      return ClockStatus(seconds: 0)
+      return 0
     }
     if records.count % 2  == 1{
       if calendar.isDateInToday(date){
@@ -45,7 +45,35 @@ struct ClockRecordHelper {
       let seconds = end.clock_time.timeIntervalSince1970 - start.clock_time.timeIntervalSince1970
       total_seconds += seconds
     }
-    
+    return total_seconds
+  }
+  
+  static func clockStatusInDate(date:NSDate) -> ClockStatus{
+    let total_seconds = workedTimeSecondsInDate(date)
     return ClockStatus(seconds: total_seconds)
+  }
+  
+  
+  
+  static func clockStatusInRange(range:RecordDateRange) -> ClockStatus{
+    var total_seconds : NSTimeInterval = 0
+    var calcDate = range.start
+    while calcDate.isBefore(range.end){
+      total_seconds += workedTimeSecondsInDate(calcDate)
+      calcDate = calendar.dateByAddingUnit(.Day, value: 1, toDate: calcDate, options: [])!
+    }
+    return ClockStatus(seconds: total_seconds)
+  }
+  
+  static func  setupRecords(records:[ClockRecord]){
+    var prevDate = NSDate(timeIntervalSinceReferenceDate: 0)
+    for r in records{
+      if calendar.isDate(r.clock_time, inSameDayAsDate: prevDate){
+        continue
+      }else{
+        r.isFirstRecordOfDay = true
+        prevDate = r.clock_time
+      }
+    }
   }
 }

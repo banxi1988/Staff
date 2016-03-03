@@ -70,6 +70,7 @@ class ClockRecordListViewController : UICollectionViewController,UICollectionVie
   struct CellIdentifiers{
     static let recordCell = "record_cell"
     static let firstRecordCell = "first_record_cell"
+    static let sectionHeader = "sectionHeader"
     
   }
   
@@ -82,6 +83,7 @@ class ClockRecordListViewController : UICollectionViewController,UICollectionVie
     
     collectionView?.registerClass(ClockRecordCell.self, forCellWithReuseIdentifier: CellIdentifiers.recordCell)
     collectionView?.registerClass(FirstRecordCell.self, forCellWithReuseIdentifier: CellIdentifiers.firstRecordCell)
+    collectionView?.registerClass(RecordDateRangeHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellIdentifiers.sectionHeader)
     
     let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addRecord:")
     navigationItem.rightBarButtonItem =  addButton
@@ -96,28 +98,20 @@ class ClockRecordListViewController : UICollectionViewController,UICollectionVie
     NSNotificationCenter.defaultCenter().removeObserver(self)
   }
   
-  var records: [ClockRecord] = []
+  var recordDateRanges: [RecordDateRange] = []
   
   func loadData(){
-    let records = ClockRecordService.sharedService.all()
-    setupRecords(records)
-    self.records.removeAll()
-    self.records.appendContentsOf(records)
+    let today = NSDate()
+    recordDateRanges.removeAll()
+    recordDateRanges.append(RecordDateRange(monthDate: today))
+    recordDateRanges.append(RecordDateRange(monthDate: calendar.bx_prevMonthDate(today)))
     collectionView?.reloadData()
-  }
-  
-  func setupRecords(records:[ClockRecord]){
-    let calendar = NSCalendar.currentCalendar()
-    var prevDate = NSDate(timeIntervalSinceReferenceDate: 0)
-    for r in records{
-      if calendar.isDate(r.clock_time, inSameDayAsDate: prevDate){
-        continue
-      }else{
-        r.isFirstRecordOfDay = true
-        prevDate = r.clock_time
-      }
+    if #available(iOS 9.0, *) {
+        flowLayout.sectionHeadersPinToVisibleBounds = true
     }
   }
+  
+
   
   func addRecord(sender:AnyObject){
     let vc = ClockRecordEditorViewController()
@@ -126,25 +120,34 @@ class ClockRecordListViewController : UICollectionViewController,UICollectionVie
   
  
   // MARK: Helper
+  func recordDateRangeAtSection(section:Int) -> RecordDateRange{
+    return recordDateRanges[section]
+  }
+  
+  func recordsOfIndexPath(section:Int) -> [ClockRecord]{
+    return recordDateRangeAtSection(section).records
+  }
+  
   func recordAtIndexPath(indexPath:NSIndexPath) -> ClockRecord{
+    let records = recordsOfIndexPath(indexPath.section)
     return records[indexPath.item]
   }
   
   var numberOfSections:Int{
-    return 1
+    return recordDateRanges.count
   }
   
   func numberOfItemsInSection(section:Int) -> Int {
-    return records.count
+    return recordsOfIndexPath(section).count
   }
   // MARK: DataSource
   
   override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-    return 1
+    return numberOfSections
   }
   
   override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return records.count
+    return numberOfItemsInSection(section)
   }
   
   override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -174,6 +177,23 @@ class ClockRecordListViewController : UICollectionViewController,UICollectionVie
   }
   
   
+  // MARK: Section Header
+  override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    if kind == UICollectionElementKindSectionHeader{
+      let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: CellIdentifiers.sectionHeader, forIndexPath: indexPath) as! RecordDateRangeHeaderView
+      let range = recordDateRangeAtSection(indexPath.section)
+      header.bind(range)
+      return header
+    }else{
+      fatalError("Unsupported kind: \(kind)")
+    }
+  }
+  
+  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    let width = collectionView.bounds.width
+    let height: CGFloat = 36
+    return CGSize(width: width, height: height)
+  }
   
   
   
@@ -181,21 +201,17 @@ class ClockRecordListViewController : UICollectionViewController,UICollectionVie
 }
 
 extension ClockRecordListViewController: ClockRecordCellDelegate{
-  func deleteRecord(record:ClockRecord){
-    if let index = records.indexOf(record){
-      records.removeAtIndex(index)
+  func deleteRecordAtIndexPath(indexPath:NSIndexPath){
+      let record = recordAtIndexPath(indexPath)
       ClockRecordService.sharedService.delete(record)
-      let indexPath = NSIndexPath(forItem: index, inSection: 0)
       collectionView?.deleteItemsAtIndexPaths([indexPath])
       loadData()
-    }
-    
   }
   
-  
-  func clockRecordCell(cell: ClockRecordCell, deleteClockRecord record: ClockRecord) {
+ 
+  func clockRecordCell(cell: ClockRecordCell, deleteAtIndexPath indexPath: NSIndexPath) {
     bx_prompt("确定删除这条打卡记录?"){ sure in
-      self.deleteRecord(record)
+      self.deleteRecordAtIndexPath(indexPath)
     }
   }
 }

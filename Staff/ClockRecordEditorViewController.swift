@@ -169,7 +169,7 @@ class ClockRecordEditorViewController : UITableViewController {
     let pickerController = DatePickerController()
     let picker = pickerController.datePicker
     pickerController.date = NSDate()
-    picker.minimumDate = NSDate(timeIntervalSinceNow: -3600 * 24 * 10)
+    picker.minimumDate = NSDate(timeIntervalSinceNow: -3600 * 24 * 60)
     picker.maximumDate = NSDate()
     picker.datePickerMode = .DateAndTime
     pickerController.pickDoneHandler = { date in
