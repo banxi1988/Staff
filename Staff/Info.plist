@@ -22,6 +22,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -36,5 +40,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>用以获得当前位置</string>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>用于进行上下班打卡提醒</string>
 </dict>
 </plist>

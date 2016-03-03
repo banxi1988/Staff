@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import CoreLocation
+
+let app = UIApplication.sharedApplication()
 
 // Build for target uicontroller
 import UIKit
@@ -98,7 +101,9 @@ class MainViewController : UIViewController {
     navigationItem.leftBarButtonItem = settingsItem
     navigationItem.rightBarButtonItem = manageItem
     
-
+    bx_delay(2){
+      self.setupRegionMonitor()
+    }
     
     
   }
@@ -123,11 +128,106 @@ class MainViewController : UIViewController {
     super.viewDidDisappear(animated)
     clockStatusView.stopTimer()
   }
+
+  
+  // MARK: Region Monitor Support
+  lazy var locManager = CLLocationManager()
+  var prevAuthStatus:CLAuthorizationStatus?
+  func setupRegionMonitor(){
+    if !CLLocationManager.isMonitoringAvailableForClass(CLCircularRegion.self){
+      log.warning("MonitoringForClass is Not Available")
+      return
+    }
+    
+    locManager.delegate = self
+    let status = CLLocationManager.authorizationStatus()
+    self.prevAuthStatus = status
+    if status == CLAuthorizationStatus.AuthorizedAlways{
+        self.startMonitoring()
+    }else{
+        locManager.requestAlwaysAuthorization()
+    }
+  }
+  
+  func startMonitoring(){
+    log.debug("startMonitoring")
+   locManager.startMonitoringForRegion(companyLoc)
+  }
   
   
   
   
+}
+
+struct RegionIdentifiers{
+  static let company = "company"
+}
+
+let companyLoc = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 22.840974, longitude: 108.258372), radius: 36, identifier: RegionIdentifiers.company)
+
+extension MainViewController: CLLocationManagerDelegate{
   
+  
+  func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    log.info("currentAuthStatus: \(status)")
+    if status == CLAuthorizationStatus.AuthorizedAlways{
+      startMonitoring()
+    }
+  }
+  
+  func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    log.error("error:\(error)")
+  }
+  
+  
+  
+  func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion) {
+    log.debug("region:\(region)")
+  }
+  
+  func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
+   log.error("region:\(region) error:\(error)")
+  }
+  
+  // MARK: Region Monitor
+  func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
+    log.info("region:\(region)")
+    if region.identifier == RegionIdentifiers.company{
+      notifyEnterCompanyRegion()
+    }
+  }
+  
+  func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
+    log.info("region:\(region)")
+    if region.identifier == RegionIdentifiers.company{
+      notifyExitCompanyRegion()
+    }
+  }
+  
+  // MARK: Region Montior Handler
+  func notifyEnterCompanyRegion(){
+    let note = "您已经进入公司范围,记得上班打卡哦."
+    if app.isActive{
+      bx_confirm(note){}
+    }else{
+      let notif = UILocalNotification()
+      notif.soundName = UILocalNotificationDefaultSoundName
+      notif.alertBody = note
+      app.presentLocalNotificationNow(notif)
+    }
+  }
+  
+  func notifyExitCompanyRegion(){
+    let note = "您已经离开公司范围,记得下班打卡哦."
+    if app.isActive{
+      bx_confirm(note){}
+    }else{
+      let notif = UILocalNotification()
+      notif.soundName = UILocalNotificationDefaultSoundName
+      notif.alertBody = note
+      app.presentLocalNotificationNow(notif)
+    }
+  }
 }
 
 

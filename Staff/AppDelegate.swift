@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BXiOSUtils
 import SwiftyBeaver
 
 let log = SwiftyBeaver.self
@@ -17,11 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
 
+
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
     setupLog()
     setUpAppearanceProxy()
     AppUserDefaults.registerDefaults()
+    setupLocalNotification()
     start()
     return true
   }
@@ -35,14 +38,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     log.debug("makeKeyAndVisible Down")
   }
   
-  func setupLog(){
-    // add log destinations. at least one is needed!
-    let console = ConsoleDestination()  // log to Xcode Console
-    let file = FileDestination()  // log to default swiftybeaver.log file
-    log.addDestination(console)
-    log.addDestination(file)
-   
+  func setupLocalNotification(){
+    let app = UIApplication.sharedApplication()
+    let settings = UIUserNotificationSettings(forTypes: [.Sound,.Alert,.Badge], categories: nil)
+    app.registerUserNotificationSettings(settings)
+    app.cancelAllLocalNotifications()
   }
+  
+  func setupLog(){
+    let file = FileDestination()  // log to default swiftybeaver.log file
+    
+    #if DEBUG
+      // add log destinations. at least one is needed!
+      let console = ConsoleDestination()  // log to Xcode Console
+      log.addDestination(console)
+      file.minLevel = .Debug
+    #else
+      file.minLevel = .Info
+    #endif
+    log.addDestination(file)
+    
+  }
+
 
   func applicationWillResignActive(application: UIApplication) {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -68,4 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
+
 

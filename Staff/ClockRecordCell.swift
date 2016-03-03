@@ -129,7 +129,7 @@ class ClockRecordCell : UICollectionViewCell  ,BXBindable, UIGestureRecognizerDe
       lastLocation = point
       return
     }
-    log.debug("moveFrom: \(prevLoc) to:\(point)")
+//    log.verbose("moveFrom: \(prevLoc) to:\(point)")
     let translationX = point.x - prevLoc.x
     let newFrame = topContentView.frame.offsetBy(dx: translationX, dy: 0)
     UIView.animateWithDuration(0.15){
