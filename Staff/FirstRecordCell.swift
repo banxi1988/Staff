@@ -33,7 +33,7 @@ class FirstRecordCell : ClockRecordCell{
   
   override func bind(item:ClockRecord){
     let date = item.clock_time
-    weekdayLabel.text  = date.zhShortWeekday
+    weekdayLabel.text  = calendar.isDateInToday(date) ? "今天" : date.zhShortWeekday
     dayLabel.text  = date.bx_shortDateString
     super.bind(item)
     bx_async{
