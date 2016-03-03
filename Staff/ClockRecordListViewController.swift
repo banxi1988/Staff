@@ -163,6 +163,7 @@ class ClockRecordListViewController : UICollectionViewController,UICollectionVie
     swipeGestureRecognizer.delegate = cell
     collectionView.panGestureRecognizer.requireGestureRecognizerToFail(swipeGestureRecognizer)
     cell.delegate = self
+    cell.indexPath = indexPath
     return cell
   }
   
