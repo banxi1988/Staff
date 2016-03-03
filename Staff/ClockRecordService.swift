@@ -37,6 +37,12 @@ class ClockRecordService{
   let t_ClockRecord = Table("clockRecord")
   static var sharedService:ClockRecordService{ return clockRecordService }
   private init(){
+    #if DEBUG
+    db.trace{ sql in
+      log.debug(sql)
+    }
+    #endif
+    
     let stmt =  t_ClockRecord.create(ifNotExists:true){ t in
       t.column(Columns.id, primaryKey:.Autoincrement)
       t.column(Columns.created)
@@ -51,7 +57,7 @@ class ClockRecordService{
   
   func query(queryType:QueryType) -> [ClockRecord]{
     var list = [ClockRecord]()
-    for row in try! db.prepare(queryType.order(Columns.clock_time.desc)) {
+    for row in try! db.prepare(queryType) {
       let obj = ClockRecord(row:row)
       list.append(obj)
     }
@@ -59,7 +65,7 @@ class ClockRecordService{
   }
   
   func all() -> [ClockRecord]{
-    return query(t_ClockRecord)
+    return query(t_ClockRecord.order(Columns.clock_time.desc))
   }
   
   func add(obj:ClockRecord){
@@ -128,12 +134,19 @@ class ClockRecordService{
 
 extension ClockRecordService{
   
+  func recordsBetween(fromDate:NSDate,toDate date:NSDate) -> [ClockRecord]{
+    let queryStmt = t_ClockRecord.filter(Columns.clock_time.between(fromDate, toDate: date)).order(Columns.clock_time.desc)
+    return query(queryStmt)
+  }
+  
   func recordsInDate(date:NSDate) -> [ClockRecord]{
-    let calendar = NSCalendar.currentCalendar()
-    return all().filter{ calendar.isDate($0.clock_time, inSameDayAsDate: date) }
-      .sort{ (l,r) -> Bool in
-      return l.clock_time.isBefore(r.clock_time)
-    }
+    let stmt = t_ClockRecord.filter(Columns.clock_time.inDay(date)).order(Columns.clock_time.asc)
+    return query(stmt)
+//    let calendar = NSCalendar.currentCalendar()
+//    return all().filter{ calendar.isDate($0.clock_time, inSameDayAsDate: date) }
+//      .sort{ (l,r) -> Bool in
+//      return l.clock_time.isBefore(r.clock_time)
+//    }
 
   }
   
@@ -143,5 +156,11 @@ extension ClockRecordService{
   
   func lastRecordInToday() -> ClockRecord?{
     return recordsInToday().last
+  }
+  
+  func recordsInMonth(date:NSDate) -> [ClockRecord]{
+    let startDate = calendar.bx_startDateInMonth(date)
+    let endDate = calendar.bx_endDateInMonth(date)
+    return recordsBetween(startDate, toDate:  endDate)
   }
 }

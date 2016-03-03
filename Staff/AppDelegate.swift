@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let file = FileDestination()  // log to default swiftybeaver.log file
     log.addDestination(console)
     log.addDestination(file)
+   
   }
 
   func applicationWillResignActive(application: UIApplication) {

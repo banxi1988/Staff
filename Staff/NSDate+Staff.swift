@@ -22,3 +22,22 @@ extension NSDate{
     return "星期\(zhStandaloneWeekday)"
   }
 }
+
+extension NSCalendar{
+  func bx_startDateInMonth(date:NSDate) -> NSDate{
+    let comps = components([.Year,.Month,.Day], fromDate: date)
+    comps.day = 1
+    comps.hour = 0
+    return dateFromComponents(comps)!
+  }
+  
+  func bx_endDateInMonth(date:NSDate) -> NSDate{
+    let comps = components([.Year,.Month,.Day], fromDate: date)
+    let maxDay = rangeOfUnit(.Day, inUnit: .Month, forDate: date).length
+    comps.day = maxDay
+    comps.hour = 24
+    return dateFromComponents(comps)!
+  }
+  
+  
+}

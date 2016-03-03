@@ -98,7 +98,7 @@ class MainViewController : UIViewController {
     navigationItem.leftBarButtonItem = settingsItem
     navigationItem.rightBarButtonItem = manageItem
     
-    
+
     
     
   }
