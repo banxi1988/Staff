@@ -39,7 +39,7 @@ class FirstRecordCell : ClockRecordCell{
     bx_async{
       let clockStatus = ClockRecordHelper.clockStatusInDate(date)
       bx_runInUiThread{
-        self.worked_timeLabel.text = "上班时长: " + clockStatus.worked_time
+        self.worked_timeLabel.text = "工作: " + clockStatus.worked_time
       }
     }
   }

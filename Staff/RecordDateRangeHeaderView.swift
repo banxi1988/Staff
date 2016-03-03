@@ -37,7 +37,7 @@ class RecordDateRangeHeaderView : UICollectionReusableView  ,BXBindable {
     bx_async{
       let clockStatus = ClockRecordHelper.clockStatusInRange(item)
       bx_runInUiThread{
-        self.worked_timeLabel.text = "上班时长累计: " + clockStatus.worked_time
+        self.worked_timeLabel.text = "时长累计: " + clockStatus.worked_time
       }
     }
   }
@@ -77,7 +77,7 @@ class RecordDateRangeHeaderView : UICollectionReusableView  ,BXBindable {
     titleLabel.pa_centerY.install()
     titleLabel.pa_leading.eq(15).install()
     
-    worked_timeLabel.pa_leading.eq(75).install()
+    worked_timeLabel.pa_leading.eq(85).install()
     worked_timeLabel.pa_centerY.install()
     
     disclosureButton.pa_trailing.eq(8).install()
@@ -91,7 +91,7 @@ class RecordDateRangeHeaderView : UICollectionReusableView  ,BXBindable {
     titleLabel.font = UIFont.systemFontOfSize(15)
     
     worked_timeLabel.textColor = AppColors.primaryTextColor
-    worked_timeLabel.font = UIFont.systemFontOfSize(15)
+    worked_timeLabel.font = UIFont.systemFontOfSize(13)
     
     disclosureButton.hidden = true
     disclosureButton.setTitle("统计", forState: .Normal)

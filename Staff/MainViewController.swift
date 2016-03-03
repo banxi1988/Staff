@@ -94,7 +94,7 @@ class MainViewController : UIViewController {
 //    navigationItem.title = title
    
     let settingsItem = UIBarButtonItem(title: "设置", style: .Plain, target: self, action: "onSettingsButtonPressed:")
-    let manageItem = UIBarButtonItem(title: "管理", style: .Plain, target: self, action: "onManageButtonPressed:")
+    let manageItem = UIBarButtonItem(title: "记录", style: .Plain, target: self, action: "onManageButtonPressed:")
     navigationItem.leftBarButtonItem = settingsItem
     navigationItem.rightBarButtonItem = manageItem
     
