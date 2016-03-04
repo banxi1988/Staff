@@ -88,8 +88,8 @@ class CompanyRegionViewController:UIViewController{
       
     }
     
-    NSNotificationCenter.defaultCenter().addObserverForName(AppEvents.CompanyRegionChanged, object: nil, queue: nil) { (notif) -> Void in
-      self.setupCompnayRegion()
+    NSNotificationCenter.defaultCenter().addObserverForName(AppEvents.CompanyRegionChanged, object: nil, queue: nil) { [weak self] (notif) -> Void in
+      self?.setupCompnayRegion()
     }
     
     

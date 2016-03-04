@@ -34,10 +34,23 @@ class RecordDateRangeHeaderView : UICollectionReusableView  ,BXBindable {
   func bind(item:RecordDateRange){
     self.item = item
     titleLabel.text  = item.rangeTitle
-    bx_async{
+    
+    NSNotificationCenter.defaultCenter().addObserverForName(AppEvents.ClockDataSetChanged, object: nil, queue: nil) { [weak self] (notf) -> Void in
+       self?.asyncCountWorkedTime(item)
+    }
+    
+    asyncCountWorkedTime(item)
+  }
+  
+  deinit{
+    NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
+  func asyncCountWorkedTime(item:RecordDateRange){
+    bx_async{ [weak self] in
       let clockStatus = ClockRecordHelper.clockStatusInRange(item)
       bx_runInUiThread{
-        self.worked_timeLabel.text = "时长累计: " + clockStatus.worked_time
+        self?.worked_timeLabel.text = "时长累计: " + clockStatus.worked_time
       }
     }
   }

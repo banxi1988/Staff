@@ -88,8 +88,10 @@ class ClockRecordListViewController : UICollectionViewController,UICollectionVie
     let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addRecord:")
     navigationItem.rightBarButtonItem =  addButton
     
-    NSNotificationCenter.defaultCenter().addObserverForName(AppEvents.ClockDataSetChanged, object: nil, queue: nil) { (notif) -> Void in
-       self.loadData()
+    NSNotificationCenter.defaultCenter().addObserverForName(AppEvents.ClockDataSetChanged, object: nil, queue: nil) { [weak self] (notif) -> Void in
+      if (notif.object as? NSObject) != self{
+         self?.loadData()
+      }
     }
     loadData()
   }
@@ -210,7 +212,12 @@ extension ClockRecordListViewController: ClockRecordCellDelegate{
          recordDateRangeAtSection(indexPath.section).records.removeAtIndex(index)
       }
       collectionView?.deleteItemsAtIndexPaths([indexPath])
+      collectionView?.reloadData()
+      flowLayout.invalidateLayout()
+    if numberOfItemsInSection(indexPath.section) == 0{
       loadData()
+    }
+    NSNotificationCenter.defaultCenter().postNotificationName(AppEvents.ClockDataSetChanged, object: self)
   }
   
  
