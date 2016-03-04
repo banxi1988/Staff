@@ -102,16 +102,29 @@ class MainViewController : UIViewController {
     navigationItem.rightBarButtonItem = manageItem
     
     bx_delay(2){
-      self.setupRegionMonitor()
+      self.updateMonitoringState()
     }
     
-    NSNotificationCenter.defaultCenter().addObserverForName(AppEvents.CompanyRegionChanged, object: nil, queue: nil) { (notif) -> Void in
-      self.startMonitoring()
+    NSNotificationCenter.defaultCenter().addObserverForName(AppEvents.CompanyRegionChanged, object: nil, queue: nil) { [weak self] (notif) -> Void in
+      self?.updateMonitoringState()
+    }
+    
+    NSNotificationCenter.defaultCenter().addObserverForName(AppEvents.RegionNotifySwitchChanged, object: nil, queue: nil) { [weak self] (notif) -> Void in
+      self?.updateMonitoringState()
     }
   }
   
+  
   deinit{
     NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
+  func updateMonitoringState(){
+    if AppUserDefaults.regionNotifyEnabled{
+      setupRegionMonitor()
+    }else{
+      stopMonitoring()
+    }
   }
  
   func onManageButtonPressed(sender:AnyObject){
@@ -157,8 +170,14 @@ class MainViewController : UIViewController {
   
   func startMonitoring(){
     let region = AppUserDefaults.companyRegion ?? presetCompanyLoc
-    log.debug("startMonitoring region:\(region)")
+    log.debug("region:\(region)")
    locManager.startMonitoringForRegion(region)
+  }
+  
+  func stopMonitoring(){
+    let region = AppUserDefaults.companyRegion ?? presetCompanyLoc
+    log.debug("region:\(region)")
+   locManager.stopMonitoringForRegion(region)
   }
   
   

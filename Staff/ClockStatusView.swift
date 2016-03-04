@@ -142,6 +142,10 @@ class ClockStatusView : UIView  ,BXBindable {
     }
     statusLabel.text = isWorking ? "工作中..." : "休息中..."
     bind(status)
+    
+    if isWorking && timerInterval > 0 {
+      AppNotifications.notifyWorkedTimeExceed(status.need_time_seconds)
+    }
   }
   
   var isClockEvent = false

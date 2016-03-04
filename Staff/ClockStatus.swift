@@ -34,6 +34,10 @@ struct ClockStatus{
     }
   }
   
+  var need_time_seconds:NSTimeInterval{
+    return workTimeIntevalStandard - worked_seconds
+  }
+  
   var off_time:String{
     if worked_seconds >= workTimeIntevalStandard{
       return "到点了"

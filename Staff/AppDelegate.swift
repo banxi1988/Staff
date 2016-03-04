@@ -71,6 +71,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     log.addDestination(file)
     
   }
+  
+  func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+    log.info("notification:\(notification)")
+  }
 
 
   func applicationWillResignActive(application: UIApplication) {

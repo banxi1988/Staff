@@ -79,6 +79,15 @@ class SettingsViewController : UITableViewController {
     return cell
   }()
   
+  lazy var notifyCell: RightDetailCell = {
+    let cell = RightDetailCell()
+    cell.textLabel?.text = "提醒设置"
+    cell.detailTextLabel?.text = ""
+    cell.staticHeight = 50
+    return cell
+  }()
+  
+  
   lazy var companyRegion = AppUserDefaults.companyRegion ?? presetCompanyLoc
   
   override func viewDidLoad() {
@@ -87,7 +96,7 @@ class SettingsViewController : UITableViewController {
     navigationItem.title = title
    
     staticAdapter.bindTo(tableView)
-    staticAdapter.appendContentsOf([work_durationCell,company_regionCell])
+    staticAdapter.appendContentsOf([work_durationCell,company_regionCell,notifyCell])
     staticAdapter.didSelectCell = { cell,index in
       self.didTapCell(cell)
     }
@@ -109,10 +118,15 @@ class SettingsViewController : UITableViewController {
   
   
   func didTapCell(cell:UITableViewCell){
-    if cell == work_durationCell{
+    switch cell{
+    case work_durationCell:
         chooseWorkDuration()
-    }else if cell == company_regionCell{
+    case company_regionCell:
         viewCompanyRegion()
+    case notifyCell:
+        let vc = NotificationSettingsViewController()
+        showViewController(vc, sender: self)
+    default:break
     }
   }
   

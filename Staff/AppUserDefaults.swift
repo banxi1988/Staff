@@ -9,14 +9,19 @@
 import Foundation
 
 // Build for target settings
+// Build for target settings
 //-AppUserDefaults(sync_on_save=true,prefix=staff)
-//workDuration:f
+//regionNotifyEnabled:b
+//workedtimeExceedNotifyEnabled:b
+
+
+struct Keys{
+      static let workDuration = "staff_workDuration"
+      static let companyRegion = "staff_company_region"
+}
 
 class AppUserDefaults:NSObject {
-    struct Keys{
-        static let workDuration = "staff_workDuration"
-        static let companyRegion = "company_region"
-    }
+
 
     static let  userDefaults = NSUserDefaults.standardUserDefaults()
     static var workDuration:WorkDuration{
@@ -31,7 +36,11 @@ class AppUserDefaults:NSObject {
   
   
   static func registerDefaults(){
-    userDefaults.registerDefaults([Keys.workDuration:8])
+    userDefaults.registerDefaults([
+      Keys.workDuration:8,
+      Keys.workedtimeExceedNotifyEnabled:true,
+      Keys.regionNotifyEnabled: true
+      ])
   }
 }
 
@@ -57,5 +66,28 @@ extension AppUserDefaults{
       return region
     }
     
+  }
+}
+
+extension Keys{
+  static let regionNotifyEnabled = "staff_regionNotifyEnabled"
+  static let workedtimeExceedNotifyEnabled = "staff_workedtimeExceedNotifyEnabled"
+}
+extension AppUserDefaults {
+  static var regionNotifyEnabled:Bool{
+    set{
+    userDefaults.setBool(newValue,forKey:Keys.regionNotifyEnabled)
+    userDefaults.synchronize()
+    }get{
+      return userDefaults.boolForKey(Keys.regionNotifyEnabled)
+    }
+  }
+  static var workedtimeExceedNotifyEnabled:Bool{
+    set{
+    userDefaults.setBool(newValue,forKey:Keys.workedtimeExceedNotifyEnabled)
+    userDefaults.synchronize()
+    }get{
+      return userDefaults.boolForKey(Keys.workedtimeExceedNotifyEnabled)
+    }
   }
 }

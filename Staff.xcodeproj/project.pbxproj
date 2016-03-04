@@ -16,6 +16,9 @@
 		3E2105141C88385D004A4EC9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2105131C88385D004A4EC9 /* MapKit.framework */; };
 		3E21051B1C890EF7004A4EC9 /* CompanyGeoRegionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E21051A1C890EF7004A4EC9 /* CompanyGeoRegionPickerViewController.swift */; };
 		3E21051D1C89301B004A4EC9 /* CompanyRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E21051C1C89301B004A4EC9 /* CompanyRegionViewController.swift */; };
+		3E21051F1C89655E004A4EC9 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E21051E1C89655E004A4EC9 /* NotificationSettingsViewController.swift */; };
+		3E2105221C89713C004A4EC9 /* AppNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2105211C89713C004A4EC9 /* AppNotifications.swift */; };
+		3E2105241C897247004A4EC9 /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2105231C897247004A4EC9 /* AppDelegate+Notifications.swift */; };
 		3E898D101C858C6700152D56 /* AppEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E898D0F1C858C6700152D56 /* AppEvents.swift */; };
 		3E898D121C8590C800152D56 /* UIButton+ActionAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E898D111C8590C800152D56 /* UIButton+ActionAppearance.swift */; };
 		3E898D141C8596D800152D56 /* ClockRecordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E898D131C8596D800152D56 /* ClockRecordListViewController.swift */; };
@@ -82,6 +85,9 @@
 		3E2105191C884D17004A4EC9 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 		3E21051A1C890EF7004A4EC9 /* CompanyGeoRegionPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyGeoRegionPickerViewController.swift; sourceTree = "<group>"; };
 		3E21051C1C89301B004A4EC9 /* CompanyRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyRegionViewController.swift; sourceTree = "<group>"; };
+		3E21051E1C89655E004A4EC9 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
+		3E2105211C89713C004A4EC9 /* AppNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNotifications.swift; sourceTree = "<group>"; };
+		3E2105231C897247004A4EC9 /* AppDelegate+Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications.swift"; sourceTree = "<group>"; };
 		3E898D0F1C858C6700152D56 /* AppEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEvents.swift; sourceTree = "<group>"; };
 		3E898D111C8590C800152D56 /* UIButton+ActionAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+ActionAppearance.swift"; sourceTree = "<group>"; };
 		3E898D131C8596D800152D56 /* ClockRecordListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockRecordListViewController.swift; sourceTree = "<group>"; };
@@ -200,13 +206,11 @@
 		3E177E181C83E88300AB1815 /* Staff */ = {
 			isa = PBXGroup;
 			children = (
+				3E2105201C897116004A4EC9 /* App */,
 				3E177E491C83E8F700AB1815 /* Controller */,
 				3E177E481C83E8F500AB1815 /* View */,
 				3E177E471C83E8F100AB1815 /* Model */,
 				3E177E4A1C83E8FE00AB1815 /* Support Files */,
-				3EA170A31C8545B3008FA446 /* Stub.h */,
-				3EA170A41C8545B3008FA446 /* Stub.m */,
-				3EA170A21C8545B2008FA446 /* Staff-Bridging-Header.h */,
 			);
 			path = Staff;
 			sourceTree = "<group>";
@@ -270,6 +274,7 @@
 				3E91CA601C86D0010065CA49 /* SettingsViewController.swift */,
 				3E21051A1C890EF7004A4EC9 /* CompanyGeoRegionPickerViewController.swift */,
 				3E21051C1C89301B004A4EC9 /* CompanyRegionViewController.swift */,
+				3E21051E1C89655E004A4EC9 /* NotificationSettingsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -277,16 +282,28 @@
 		3E177E4A1C83E8FE00AB1815 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				3EA170A41C8545B3008FA446 /* Stub.m */,
+				3EA170A31C8545B3008FA446 /* Stub.h */,
+				3EA170A21C8545B2008FA446 /* Staff-Bridging-Header.h */,
 				3E2105191C884D17004A4EC9 /* Location.gpx */,
-				3EA170B01C85572C008FA446 /* AppAppearance.swift */,
-				3E177E191C83E88300AB1815 /* AppDelegate.swift */,
 				3E177E201C83E88300AB1815 /* Assets.xcassets */,
 				3E177E221C83E88300AB1815 /* LaunchScreen.storyboard */,
 				3E177E251C83E88300AB1815 /* Info.plist */,
-				3E898D0F1C858C6700152D56 /* AppEvents.swift */,
-				3E91CA621C86D8390065CA49 /* AppUserDefaults.swift */,
 			);
 			name = "Support Files";
+			sourceTree = "<group>";
+		};
+		3E2105201C897116004A4EC9 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3E91CA621C86D8390065CA49 /* AppUserDefaults.swift */,
+				3E898D0F1C858C6700152D56 /* AppEvents.swift */,
+				3EA170B01C85572C008FA446 /* AppAppearance.swift */,
+				3E177E191C83E88300AB1815 /* AppDelegate.swift */,
+				3E2105211C89713C004A4EC9 /* AppNotifications.swift */,
+				3E2105231C897247004A4EC9 /* AppDelegate+Notifications.swift */,
+			);
+			name = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -581,10 +598,13 @@
 				3E91CA631C86D8390065CA49 /* AppUserDefaults.swift in Sources */,
 				3EA1709D1C8539B3008FA446 /* ClockRecord.swift in Sources */,
 				3E898D141C8596D800152D56 /* ClockRecordListViewController.swift in Sources */,
+				3E2105221C89713C004A4EC9 /* AppNotifications.swift in Sources */,
 				3EF0D4EF1C87EBA700872085 /* RecordDateRange.swift in Sources */,
 				3EA170A91C8547D0008FA446 /* AnnularProgressView.swift in Sources */,
 				3EA1709B1C8538CE008FA446 /* SQLite+NSURL.swift in Sources */,
 				3EA170B31C855796008FA446 /* ClockStatus.swift in Sources */,
+				3E2105241C897247004A4EC9 /* AppDelegate+Notifications.swift in Sources */,
+				3E21051F1C89655E004A4EC9 /* NotificationSettingsViewController.swift in Sources */,
 				3EF0D4F11C88069300872085 /* RecordDateRangeHeaderView.swift in Sources */,
 				3E177E1A1C83E88300AB1815 /* AppDelegate.swift in Sources */,
 				3EA170B51C8574CC008FA446 /* ClockRecordHelper.swift in Sources */,
