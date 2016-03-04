@@ -15,6 +15,7 @@ import Foundation
 class AppUserDefaults:NSObject {
     struct Keys{
         static let workDuration = "staff_workDuration"
+        static let companyRegion = "company_region"
     }
 
     static let  userDefaults = NSUserDefaults.standardUserDefaults()
@@ -28,7 +29,33 @@ class AppUserDefaults:NSObject {
         }
     }
   
+  
   static func registerDefaults(){
     userDefaults.registerDefaults([Keys.workDuration:8])
+  }
+}
+
+
+import CoreLocation
+
+extension AppUserDefaults{
+  static var companyRegion: CLCircularRegion?{
+    set{
+      if let region = newValue{
+        let data = NSKeyedArchiver.archivedDataWithRootObject(region)
+        userDefaults.setObject(data, forKey: Keys.companyRegion)
+      }else{
+        userDefaults.removeObjectForKey(Keys.companyRegion)
+      }
+      userDefaults.synchronize()
+    }get{
+      guard let data = userDefaults.objectForKey(Keys.companyRegion) as? NSData else{
+        return nil
+      }
+      
+      let region = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? CLCircularRegion
+      return region
+    }
+    
   }
 }

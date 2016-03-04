@@ -14,6 +14,8 @@
 		3E177E2F1C83E88300AB1815 /* StaffTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E177E2E1C83E88300AB1815 /* StaffTests.swift */; };
 		3E177E3A1C83E88300AB1815 /* StaffUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E177E391C83E88300AB1815 /* StaffUITests.swift */; };
 		3E2105141C88385D004A4EC9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2105131C88385D004A4EC9 /* MapKit.framework */; };
+		3E21051B1C890EF7004A4EC9 /* CompanyGeoRegionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E21051A1C890EF7004A4EC9 /* CompanyGeoRegionPickerViewController.swift */; };
+		3E21051D1C89301B004A4EC9 /* CompanyRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E21051C1C89301B004A4EC9 /* CompanyRegionViewController.swift */; };
 		3E898D101C858C6700152D56 /* AppEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E898D0F1C858C6700152D56 /* AppEvents.swift */; };
 		3E898D121C8590C800152D56 /* UIButton+ActionAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E898D111C8590C800152D56 /* UIButton+ActionAppearance.swift */; };
 		3E898D141C8596D800152D56 /* ClockRecordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E898D131C8596D800152D56 /* ClockRecordListViewController.swift */; };
@@ -78,6 +80,8 @@
 		3E177E3B1C83E88300AB1815 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E2105131C88385D004A4EC9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3E2105191C884D17004A4EC9 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
+		3E21051A1C890EF7004A4EC9 /* CompanyGeoRegionPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyGeoRegionPickerViewController.swift; sourceTree = "<group>"; };
+		3E21051C1C89301B004A4EC9 /* CompanyRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyRegionViewController.swift; sourceTree = "<group>"; };
 		3E898D0F1C858C6700152D56 /* AppEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEvents.swift; sourceTree = "<group>"; };
 		3E898D111C8590C800152D56 /* UIButton+ActionAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+ActionAppearance.swift"; sourceTree = "<group>"; };
 		3E898D131C8596D800152D56 /* ClockRecordListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockRecordListViewController.swift; sourceTree = "<group>"; };
@@ -264,6 +268,8 @@
 				3E898D131C8596D800152D56 /* ClockRecordListViewController.swift */,
 				3E91CA581C85C5750065CA49 /* ClockRecordEditorViewController.swift */,
 				3E91CA601C86D0010065CA49 /* SettingsViewController.swift */,
+				3E21051A1C890EF7004A4EC9 /* CompanyGeoRegionPickerViewController.swift */,
+				3E21051C1C89301B004A4EC9 /* CompanyRegionViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -553,6 +559,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E21051D1C89301B004A4EC9 /* CompanyRegionViewController.swift in Sources */,
 				3E898D101C858C6700152D56 /* AppEvents.swift in Sources */,
 				3E91CA5D1C85ECE50065CA49 /* NSDate+Staff.swift in Sources */,
 				3EA170B11C85572C008FA446 /* AppAppearance.swift in Sources */,
@@ -565,6 +572,7 @@
 				3E91CA5B1C85E8AB0065CA49 /* FirstRecordCell.swift in Sources */,
 				3EA170A51C8545B3008FA446 /* Stub.m in Sources */,
 				3EA1709F1C853C98008FA446 /* ClockRecordService.swift in Sources */,
+				3E21051B1C890EF7004A4EC9 /* CompanyGeoRegionPickerViewController.swift in Sources */,
 				3E91CA591C85C5750065CA49 /* ClockRecordEditorViewController.swift in Sources */,
 				3EA170AB1C854837008FA446 /* AnnularMarkerView.swift in Sources */,
 				3E898D161C859C0900152D56 /* ClockRecordCell.swift in Sources */,

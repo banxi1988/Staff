@@ -105,7 +105,13 @@ class MainViewController : UIViewController {
       self.setupRegionMonitor()
     }
     
-    
+    NSNotificationCenter.defaultCenter().addObserverForName(AppEvents.CompanyRegionChanged, object: nil, queue: nil) { (notif) -> Void in
+      self.startMonitoring()
+    }
+  }
+  
+  deinit{
+    NSNotificationCenter.defaultCenter().removeObserver(self)
   }
  
   func onManageButtonPressed(sender:AnyObject){
@@ -151,7 +157,8 @@ class MainViewController : UIViewController {
   
   func startMonitoring(){
     log.debug("startMonitoring")
-   locManager.startMonitoringForRegion(companyLoc)
+    let region = AppUserDefaults.companyRegion ?? presetCompanyLoc
+   locManager.startMonitoringForRegion(region)
   }
   
   
@@ -163,7 +170,7 @@ struct RegionIdentifiers{
   static let company = "company"
 }
 
-let companyLoc = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 22.840974, longitude: 108.258372), radius: 36, identifier: RegionIdentifiers.company)
+let presetCompanyLoc = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 22.840974, longitude: 108.258372), radius: 36, identifier: RegionIdentifiers.company)
 
 extension MainViewController: CLLocationManagerDelegate{
   

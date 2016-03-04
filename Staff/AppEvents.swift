@@ -13,4 +13,5 @@ struct AppEvents{
   static let clockedUserInfoKey = "record"
   static let ClockDataSetChanged = "ClockDataSetChanged"
   static let WorkDurationChanged = "WorkDurationChanged"
+  static let CompanyRegionChanged = "CompanyRegionChanged"
 }

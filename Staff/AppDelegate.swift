@@ -31,11 +31,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func start(){
     log.debug("start")
     window = UIWindow(frame: UIScreen.mainScreen().bounds)
-    let vc = MainViewController()
-//    let vc = ClockRecordEditorViewController()
-    window?.rootViewController = UINavigationController(rootViewController: vc)
+    window?.rootViewController = startEntry()
     window?.makeKeyAndVisible()
     log.debug("makeKeyAndVisible Down")
+  }
+  
+  func startEntry() -> UIViewController{
+    #if DEBUG
+//      return currentDebugEntry()
+      #endif
+    let vc = MainViewController()
+    return UINavigationController(rootViewController: vc)
+  }
+  
+  func currentDebugEntry() -> UIViewController{
+//    let vc = CompanyGeoRegionPickerViewController()
+    let vc = SettingsViewController()
+    return UINavigationController(rootViewController: vc)
   }
   
   func setupLocalNotification(){

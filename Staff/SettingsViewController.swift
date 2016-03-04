@@ -70,6 +70,16 @@ class SettingsViewController : UITableViewController {
     cell.staticHeight = 50
     return cell
   }()
+ 
+  lazy var company_regionCell: RightDetailCell = {
+    let cell = RightDetailCell()
+    cell.textLabel?.text = "公司位置"
+    cell.detailTextLabel?.text = ""
+    cell.staticHeight = 50
+    return cell
+  }()
+  
+  lazy var companyRegion = AppUserDefaults.companyRegion ?? presetCompanyLoc
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -77,7 +87,7 @@ class SettingsViewController : UITableViewController {
     navigationItem.title = title
    
     staticAdapter.bindTo(tableView)
-    staticAdapter.appendContentsOf([work_durationCell])
+    staticAdapter.appendContentsOf([work_durationCell,company_regionCell])
     staticAdapter.didSelectCell = { cell,index in
       self.didTapCell(cell)
     }
@@ -101,7 +111,14 @@ class SettingsViewController : UITableViewController {
   func didTapCell(cell:UITableViewCell){
     if cell == work_durationCell{
         chooseWorkDuration()
+    }else if cell == company_regionCell{
+        viewCompanyRegion()
     }
+  }
+  
+  func viewCompanyRegion(){
+    let vc = CompanyRegionViewController()
+    showViewController(vc, sender: self)
   }
   
   func chooseWorkDuration(){
