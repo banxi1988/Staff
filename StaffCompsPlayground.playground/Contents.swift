@@ -243,7 +243,7 @@ class DrawClockView:UIView{
     annularBackgroundColor.setStroke()
     let ctx = UIGraphicsGetCurrentContext()
     
-    CGContextSetShadowWithColor(ctx, CGSize(width: 2, height: 3), 0.3, UIColor.whiteColor().CGColor)
+    CGContextSetShadowWithColor(ctx, CGSize(width: 2, height: 3), 0.5, UIColor.whiteColor().CGColor)
     annularPath.stroke()
     
     CGContextSaveGState(ctx)

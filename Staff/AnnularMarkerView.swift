@@ -90,17 +90,20 @@ class AnnularMarkerView:UIView{
     let annularPath = UIBezierPath(ovalInRect: rect.insetBy(dx: inset, dy: inset))
     annularPath.lineWidth = annularWidth
     annularBackgroundColor.setStroke()
-    annularPath.stroke()
     
     let ctx = UIGraphicsGetCurrentContext()
+    annularPath.stroke()
+    
     CGContextSaveGState(ctx)
+    
+    CGContextSetShadowWithColor(ctx, CGSize(width: 2, height: 2), 0.5, UIColor.whiteColor().CGColor)
     markerColor.set()
     CGContextSetLineWidth(ctx, 1.0)
     
     CGContextTranslateCTM(ctx, bounds.midX, bounds.midY)
     
     let lineRect = CGRect(x: -longMarkerWidth * 0.5, y: 0, width: longMarkerWidth, height: longMarkerSize)
-    let shortRect = CGRect(x: -shortMarkerWidth * 0.5, y: 0, width: shortMarkerWidth, height: shortMarkerSize)
+    let shortRect = CGRect(x: -shortMarkerWidth * 0.5, y: -markerPaddingOut, width: shortMarkerWidth, height: shortMarkerSize)
     
     let linePath = UIBezierPath(rect: lineRect)
     let shortPath = UIBezierPath(rect: shortRect)
