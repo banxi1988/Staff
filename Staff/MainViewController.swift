@@ -156,8 +156,8 @@ class MainViewController : UIViewController {
   }
   
   func startMonitoring(){
-    log.debug("startMonitoring")
     let region = AppUserDefaults.companyRegion ?? presetCompanyLoc
+    log.debug("startMonitoring region:\(region)")
    locManager.startMonitoringForRegion(region)
   }
   
@@ -170,7 +170,8 @@ struct RegionIdentifiers{
   static let company = "company"
 }
 
-let presetCompanyLoc = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 22.840974, longitude: 108.258372), radius: 36, identifier: RegionIdentifiers.company)
+let presetCompanyLoc = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 22.83426643, longitude: 108.25250317), radius: 36, identifier: RegionIdentifiers.company)
+// baidu loc :let presetCompanyLoc = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 22.840974, longitude: 108.258372), radius: 36, identifier: RegionIdentifiers.company)
 
 extension MainViewController: CLLocationManagerDelegate{
   
