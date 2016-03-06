@@ -57,7 +57,8 @@ class MainViewController : UIViewController {
   }
   
   func installConstaints(){
-    clockStatusView.pa_below(self.topLayoutGuide, offset: 16).install()
+    let topOffset :CGFloat = screenWidth > 321 ? 16:8
+    clockStatusView.pa_below(self.topLayoutGuide, offset: topOffset).install()
     clockStatusView.pa_centerX.install()
     clockListView.pa_below(clockStatusView,offset:15).install()
     clockListView.pa_height.eq(50).install()

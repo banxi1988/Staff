@@ -57,19 +57,21 @@ struct ClockStatus{
 
 extension ClockStatus{
   
-  var worked_time_text:NSAttributedString{
-    let text = NSMutableAttributedString(string: "已经工作: ")
-    let attrs = [NSFontAttributeName:UIFont.boldSystemFontOfSize(20)]
-    text.appendAttributedString(NSAttributedString(string: worked_time, attributes: attrs))
-    return text
+  var worked_time_label:String{ return  "已经工作" }
+  var worked_time_text:String{
+    return worked_time
   }
   
-  var need_time_text: NSAttributedString{
-     return NSAttributedString(string: "还需: \(need_time)")
+  var need_time_label:String { return "还需工作" }
+  
+  var need_time_text: String{
+     return need_time
   }
   
-  var off_time_text: NSAttributedString{
-    return NSAttributedString(string: "预计下班时间: \(off_time)")
+  var off_time_label:String{ return "下班时间" }
+  
+  var off_time_text:String{
+    return "\(off_time)"
   }
 }
 
@@ -77,22 +79,22 @@ func friendlyTimeDuration(interval:NSTimeInterval) -> String{
   let seconds = Int64(interval)
   
   switch seconds{
-  case 0..<60: return "\(seconds)秒"
+  case 0..<60: return "\(seconds) 秒"
   case 60..<3600:
     let minutes = seconds / 60
     let secs = seconds % 60
     if secs == 0{
-      return "\(minutes)分钟"
+      return "\(minutes) 分钟"
     }else{
-      return "\(minutes)分钟"
+      return "\(minutes) 分钟"
     }
   default:
      let hours = seconds / 3600
     let minutes = (seconds % 3600) / 60
      if minutes == 0{
-        return "\(hours)小时"
+        return "\(hours) 小时"
      }else{
-        return "\(hours)小时,\(minutes)分钟"
+        return "\(hours) 小时, \(minutes) 分钟"
      }
   }
   

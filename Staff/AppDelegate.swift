@@ -11,6 +11,7 @@ import BXiOSUtils
 import SwiftyBeaver
 
 let log = SwiftyBeaver.self
+let Images = UIImage.Asset.self
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
+    window = UIWindow(frame: UIScreen.mainScreen().bounds)
     setupLog()
     setUpAppearanceProxy()
     AppUserDefaults.registerDefaults()
@@ -30,7 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   func start(){
     log.debug("start")
-    window = UIWindow(frame: UIScreen.mainScreen().bounds)
     window?.rootViewController = startEntry()
     window?.makeKeyAndVisible()
     log.debug("makeKeyAndVisible Down")
@@ -46,7 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func currentDebugEntry() -> UIViewController{
 //    let vc = CompanyGeoRegionPickerViewController()
-    let vc = SettingsViewController()
+//    let vc = SettingsViewController()
+    let vc = ArtClockViewController()
     return UINavigationController(rootViewController: vc)
   }
   

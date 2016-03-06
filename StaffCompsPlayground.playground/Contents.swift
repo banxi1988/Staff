@@ -283,17 +283,107 @@ class DrawClockView:UIView{
   }
 }
 
+class ArtClockProgressView:UIView{
+  
+  let bgLayer = CALayer()
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    commonInit()
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  func commonInit(){
+    layer.addSublayer(bgLayer)
+        bgLayer.contentsGravity = kCAGravityCenter
+    bgLayer.contents = UIImage(named: "clock_marker")?.CGImage
+  }
+  
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    bgLayer.bounds = bounds
+    bgLayer.position = center
+  }
+}
+
+
+class ArtClockView:UIView{
+  
+  let markerBgLayer = CALayer()
+  let markerShadowLayer = CALayer()
+  let progressBgLayer = CALayer()
+  let buttonShadowLayer = CALayer()
+  let buttonWrapperLayer = CALayer()
+  let ovalButton = UIButton(type: .System)
+  let iconSunLayer = CALayer()
+  
+  
+  var allArtLayers:[CALayer]{
+    return [markerBgLayer,markerShadowLayer,progressBgLayer,buttonShadowLayer,buttonWrapperLayer,iconSunLayer]
+  }
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    commonInit()
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+      fatalError("init(coder:) has not been implemented")
+  }
+  
+  func commonInit(){
+    for sublayer in allArtLayers{
+//        layer.addSublayer(sublayer)
+    }
+    
+    markerBgLayer.contents = UIImage(named: "clock_marker")?.CGImage
+    progressBgLayer.contents = UIImage(named: "annular_progress_background")?.CGImage
+    progressBgLayer.contentsGravity = kCAGravityResizeAspect
+    buttonWrapperLayer.contents = UIImage(named: "annular_button_wrapper")?.CGImage
+    
+    addSubview(ovalButton)
+    
+    
+    
+    let buttonBg = UIImage(named: "oval_button_bg")
+//    ovalButton.setBackgroundImage(buttonBg, forState: .Normal)
+    
+    iconSunLayer.contents = UIImage(named: "ic_sun")?.CGImage
+    
+    
+  }
+  
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    for sublayer in allArtLayers{
+      sublayer.bounds = bounds
+      sublayer.position = center
+    }
+    buttonWrapperLayer.bounds.size = CGSize(width: 203, height: 203)
+    ovalButton.frame.size = CGSize(width: 148.6, height: 148.6)
+    ovalButton.center = center
+  }
+}
+
 let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 480))
-backgroundView.backgroundColor = .whiteColor()
+backgroundView.backgroundColor = UIColor(red: 0x3b, green: 0.2, blue: 0.4, alpha: 1.0)
 
-let drawView = DrawClockView(frame: CGRect(x: 0, y: 0, width: 240 + 76, height: 240 + 76))
-drawView.center = backgroundView.center
-drawView.backgroundColor = UIColor(white: 0.8, alpha: 1.0)
-backgroundView.addSubview(drawView)
+let markerView = ArtClockView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
 
-let drawView2 = DrawViewV2(frame: CGRect(x: 0, y: 0, width: 230, height: 230))
-drawView2.center = backgroundView.center
-//drawView2.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
-backgroundView.addSubview(drawView2)
+markerView.center = backgroundView.center
+backgroundView.addSubview(markerView)
+
+//let drawView = DrawClockView(frame: CGRect(x: 0, y: 0, width: 240 + 76, height: 240 + 76))
+//drawView.center = backgroundView.center
+//drawView.backgroundColor = UIColor(white: 0.8, alpha: 1.0)
+//backgroundView.addSubview(drawView)
+//
+//let drawView2 = DrawViewV2(frame: CGRect(x: 0, y: 0, width: 230, height: 230))
+//drawView2.center = backgroundView.center
+////drawView2.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
+//backgroundView.addSubview(drawView2)
 XCPlaygroundPage.currentPage.liveView = backgroundView
 

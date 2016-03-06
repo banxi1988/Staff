@@ -19,6 +19,7 @@
 		3E21051F1C89655E004A4EC9 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E21051E1C89655E004A4EC9 /* NotificationSettingsViewController.swift */; };
 		3E2105221C89713C004A4EC9 /* AppNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2105211C89713C004A4EC9 /* AppNotifications.swift */; };
 		3E2105241C897247004A4EC9 /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2105231C897247004A4EC9 /* AppDelegate+Notifications.swift */; };
+		3E7C570A1C8AC15800B175D7 /* ArtClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7C57091C8AC15800B175D7 /* ArtClockViewController.swift */; };
 		3E898D101C858C6700152D56 /* AppEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E898D0F1C858C6700152D56 /* AppEvents.swift */; };
 		3E898D121C8590C800152D56 /* UIButton+ActionAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E898D111C8590C800152D56 /* UIButton+ActionAppearance.swift */; };
 		3E898D141C8596D800152D56 /* ClockRecordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E898D131C8596D800152D56 /* ClockRecordListViewController.swift */; };
@@ -45,6 +46,11 @@
 		3EA170B51C8574CC008FA446 /* ClockRecordHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA170B41C8574CC008FA446 /* ClockRecordHelper.swift */; };
 		3EF0D4EF1C87EBA700872085 /* RecordDateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF0D4EE1C87EBA700872085 /* RecordDateRange.swift */; };
 		3EF0D4F11C88069300872085 /* RecordDateRangeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF0D4F01C88069300872085 /* RecordDateRangeHeaderView.swift */; };
+		3EFDB70C1C8AED0600156993 /* ArtClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFDB70B1C8AED0600156993 /* ArtClockView.swift */; };
+		3EFDB7101C8AF03800156993 /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFDB70E1C8AF03800156993 /* ImageAsset.swift */; };
+		3EFDB7111C8AF03800156993 /* StoryboardScence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFDB70F1C8AF03800156993 /* StoryboardScence.swift */; };
+		3EFDB7131C8BB4CE00156993 /* PunchButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFDB7121C8BB4CE00156993 /* PunchButtonView.swift */; };
+		3EFDB7151C8C68E900156993 /* ArtProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFDB7141C8C68E900156993 /* ArtProgressView.swift */; };
 		8DE52F10ADADBE8E40D52A63 /* Pods_StaffUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F58759C596F87287A8EB44 /* Pods_StaffUITests.framework */; };
 		9B60226793423FE20F15045C /* Pods_Staff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA287435A4A25BE4D000B23 /* Pods_Staff.framework */; };
 		E77DE59392C43990D347928C /* Pods_StaffTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A4846A3A5240BD5C35BE1C /* Pods_StaffTests.framework */; };
@@ -88,6 +94,7 @@
 		3E21051E1C89655E004A4EC9 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
 		3E2105211C89713C004A4EC9 /* AppNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNotifications.swift; sourceTree = "<group>"; };
 		3E2105231C897247004A4EC9 /* AppDelegate+Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications.swift"; sourceTree = "<group>"; };
+		3E7C57091C8AC15800B175D7 /* ArtClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtClockViewController.swift; sourceTree = "<group>"; };
 		3E898D0F1C858C6700152D56 /* AppEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEvents.swift; sourceTree = "<group>"; };
 		3E898D111C8590C800152D56 /* UIButton+ActionAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+ActionAppearance.swift"; sourceTree = "<group>"; };
 		3E898D131C8596D800152D56 /* ClockRecordListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockRecordListViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +123,11 @@
 		3EA170B41C8574CC008FA446 /* ClockRecordHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockRecordHelper.swift; sourceTree = "<group>"; };
 		3EF0D4EE1C87EBA700872085 /* RecordDateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDateRange.swift; sourceTree = "<group>"; };
 		3EF0D4F01C88069300872085 /* RecordDateRangeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDateRangeHeaderView.swift; sourceTree = "<group>"; };
+		3EFDB70B1C8AED0600156993 /* ArtClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtClockView.swift; sourceTree = "<group>"; };
+		3EFDB70E1C8AF03800156993 /* ImageAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
+		3EFDB70F1C8AF03800156993 /* StoryboardScence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScence.swift; sourceTree = "<group>"; };
+		3EFDB7121C8BB4CE00156993 /* PunchButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PunchButtonView.swift; sourceTree = "<group>"; };
+		3EFDB7141C8C68E900156993 /* ArtProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtProgressView.swift; sourceTree = "<group>"; };
 		3FA287435A4A25BE4D000B23 /* Pods_Staff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Staff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F58759C596F87287A8EB44 /* Pods_StaffUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StaffUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F0F23BC7070BB38B1443122 /* Pods-StaffTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StaffTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StaffTests/Pods-StaffTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -261,6 +273,9 @@
 				3E898D151C859C0900152D56 /* ClockRecordCell.swift */,
 				3E91CA5A1C85E8AB0065CA49 /* FirstRecordCell.swift */,
 				3EF0D4F01C88069300872085 /* RecordDateRangeHeaderView.swift */,
+				3EFDB70B1C8AED0600156993 /* ArtClockView.swift */,
+				3EFDB7121C8BB4CE00156993 /* PunchButtonView.swift */,
+				3EFDB7141C8C68E900156993 /* ArtProgressView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -275,6 +290,7 @@
 				3E21051A1C890EF7004A4EC9 /* CompanyGeoRegionPickerViewController.swift */,
 				3E21051C1C89301B004A4EC9 /* CompanyRegionViewController.swift */,
 				3E21051E1C89655E004A4EC9 /* NotificationSettingsViewController.swift */,
+				3E7C57091C8AC15800B175D7 /* ArtClockViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -282,6 +298,7 @@
 		3E177E4A1C83E8FE00AB1815 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				3EFDB70D1C8AF03800156993 /* AutoGeneratedCode */,
 				3EA170A41C8545B3008FA446 /* Stub.m */,
 				3EA170A31C8545B3008FA446 /* Stub.h */,
 				3EA170A21C8545B2008FA446 /* Staff-Bridging-Header.h */,
@@ -304,6 +321,15 @@
 				3E2105231C897247004A4EC9 /* AppDelegate+Notifications.swift */,
 			);
 			name = App;
+			sourceTree = "<group>";
+		};
+		3EFDB70D1C8AF03800156993 /* AutoGeneratedCode */ = {
+			isa = PBXGroup;
+			children = (
+				3EFDB70E1C8AF03800156993 /* ImageAsset.swift */,
+				3EFDB70F1C8AF03800156993 /* StoryboardScence.swift */,
+			);
+			path = AutoGeneratedCode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -576,13 +602,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EFDB7101C8AF03800156993 /* ImageAsset.swift in Sources */,
 				3E21051D1C89301B004A4EC9 /* CompanyRegionViewController.swift in Sources */,
 				3E898D101C858C6700152D56 /* AppEvents.swift in Sources */,
+				3EFDB7111C8AF03800156993 /* StoryboardScence.swift in Sources */,
 				3E91CA5D1C85ECE50065CA49 /* NSDate+Staff.swift in Sources */,
 				3EA170B11C85572C008FA446 /* AppAppearance.swift in Sources */,
 				3E91CA651C87D24F0065CA49 /* SQLite+NSDate.swift in Sources */,
 				3E177E1C1C83E88300AB1815 /* MainViewController.swift in Sources */,
 				3EA170AD1C854A89008FA446 /* ClockView.swift in Sources */,
+				3EFDB7131C8BB4CE00156993 /* PunchButtonView.swift in Sources */,
 				3E898D121C8590C800152D56 /* UIButton+ActionAppearance.swift in Sources */,
 				3EA170A71C854799008FA446 /* UIColor+RGBA.swift in Sources */,
 				3EA170AF1C8553FA008FA446 /* ClockStatusView.swift in Sources */,
@@ -593,6 +622,8 @@
 				3E91CA591C85C5750065CA49 /* ClockRecordEditorViewController.swift in Sources */,
 				3EA170AB1C854837008FA446 /* AnnularMarkerView.swift in Sources */,
 				3E898D161C859C0900152D56 /* ClockRecordCell.swift in Sources */,
+				3EFDB70C1C8AED0600156993 /* ArtClockView.swift in Sources */,
+				3E7C570A1C8AC15800B175D7 /* ArtClockViewController.swift in Sources */,
 				3EA1709A1C8538CE008FA446 /* SQLite+JSON.swift in Sources */,
 				3E91CA611C86D0010065CA49 /* SettingsViewController.swift in Sources */,
 				3E91CA631C86D8390065CA49 /* AppUserDefaults.swift in Sources */,
@@ -600,6 +631,7 @@
 				3E898D141C8596D800152D56 /* ClockRecordListViewController.swift in Sources */,
 				3E2105221C89713C004A4EC9 /* AppNotifications.swift in Sources */,
 				3EF0D4EF1C87EBA700872085 /* RecordDateRange.swift in Sources */,
+				3EFDB7151C8C68E900156993 /* ArtProgressView.swift in Sources */,
 				3EA170A91C8547D0008FA446 /* AnnularProgressView.swift in Sources */,
 				3EA1709B1C8538CE008FA446 /* SQLite+NSURL.swift in Sources */,
 				3EA170B31C855796008FA446 /* ClockStatus.swift in Sources */,
