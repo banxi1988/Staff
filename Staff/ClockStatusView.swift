@@ -183,14 +183,18 @@ class ClockStatusView : UIView  ,BXBindable {
     autobind()
   }
   
-//  override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-//    let cpoint = clockButton.convertPoint(point, fromView: self)
-//    if clockButton.pointInside(cpoint, withEvent: event){
-//      return clockButton
-//    }
-//    let view = super.hitTest(point, withEvent: event)
-//    return view
-//  }
+  var clockButton:UIView{
+    return clockView.punchButton
+  }
+  
+  override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+    let cpoint = clockButton.convertPoint(point, fromView: self)
+    if clockButton.pointInside(cpoint, withEvent: event){
+      return clockButton
+    }
+    let view = super.hitTest(point, withEvent: event)
+    return view
+  }
   
   
   func onTimerCallback(){
