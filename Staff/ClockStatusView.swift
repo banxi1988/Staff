@@ -101,18 +101,18 @@ class ClockStatusView : UIView  ,BXBindable {
   }
   
   func installConstaints(){
-    statusLabel.pa_top.eq(16).install()
+    statusLabel.pa_top.eq(sdp2dp(16)).install()
     statusLabel.pa_centerX.install()
     
     clockView.pac_horizontal(0)
-    clockView.pa_below(statusLabel, offset: 15).install()
+    clockView.pa_below(statusLabel, offset: sdp2dp(15)).install()
     worked_timeLabel.pa_below(clockView,offset:-16).install()
     worked_timeLabel.pa_centerX.install()
     
     worked_timeText.pa_below(worked_timeLabel, offset: 4).install()
     worked_timeText.pa_centerX.install()
     
-    need_timeLabel.pa_below(worked_timeText,offset:15).install()
+    need_timeLabel.pa_below(worked_timeText,offset:sdp2dp(15)).install()
     need_timeLabel.pa_trailing.equalTo(.CenterX, ofView: self).offset(-50).install()
     
     need_timeText.pa_trailing.eqTo(need_timeLabel).install()
@@ -135,13 +135,14 @@ class ClockStatusView : UIView  ,BXBindable {
     }
     
     statusLabel.textColor = AppColors.primaryTextColor
+    let statusFontSize = sdp2dp(36)
     if #available(iOS 8.2, *) {
-        statusLabel.font = UIFont.systemFontOfSize(36, weight: UIFontWeightMedium)
+        statusLabel.font = UIFont.systemFontOfSize(statusFontSize, weight: UIFontWeightMedium)
     } else {
-      statusLabel.font = UIFont.systemFontOfSize(36)
+      statusLabel.font = UIFont.systemFontOfSize(statusFontSize)
     }
    
-    worked_timeText.font = UIFont.boldSystemFontOfSize(40)
+    worked_timeText.font = UIFont.boldSystemFontOfSize(sdp2dp(40))
     
  
     need_timeLabel.textAlignment = .Right

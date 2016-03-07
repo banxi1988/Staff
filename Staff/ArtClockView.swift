@@ -70,22 +70,24 @@ class ArtClockView : UIView {
   }
   
   func installConstaints(){
+    let size = intrinsicContentSize()
     clockImageView.pa_bottom.eq(0).install()
     clockImageView.pac_horizontal(0)
+    clockImageView.pac_size(size)
     clockImageView.pa_top.eq(0).install()
    
     progressView.pa_aspectRatio(1).install()
     progressView.pa_centerX.install()
-    progressView.pa_centerY.offset(-24).install()
-    progressView.pa_width.eq(231).install()
+    progressView.pa_centerY.offset(-sdp2dp(24)).install()
+    progressView.pa_width.eq(sdp2dp(231)).install()
     
     punchButton.pa_centerX.install()
-    punchButton.pa_centerY.offset(-25.5).install()
+    punchButton.pa_centerY.offset(-sdp2dp(23)).install()
   }
   
   func setupAttrs(){
     clockImageView.image = Images.Biaopen.image
-    progressView.lineWidth = 10
+    progressView.lineWidth = sdp2dp(10)
     progressView.progress = 0.6
 //    punchButton.addTarget(self, action: "onPunchButtonPressed:", forControlEvents: .TouchUpInside)
   }
@@ -95,6 +97,7 @@ class ArtClockView : UIView {
   }
   
   override func intrinsicContentSize() -> CGSize {
-    return Images.Biaopen.image.size
+    let size = Images.Biaopen.image.size
+    return CGSize(width: sdp2dp(size.width), height: sdp2dp(size.height))
   }
 }

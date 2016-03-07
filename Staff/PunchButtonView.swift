@@ -62,12 +62,14 @@ class PunchButtonView : UIButton{
   }
   
   func installConstaints(){
+    let size = intrinsicContentSize()
+    backgroundImageView.pac_size(size)
     backgroundImageView.pac_edge(0)
     
-    textLabel.pa_bottom.equalTo(.CenterY, ofView: self).offset(-4).install()
+    textLabel.pa_bottom.equalTo(.CenterY, ofView: self).offset(-sdp2dp(4)).install()
     textLabel.pa_centerX.install()
     sunImageView.pa_centerX.install()
-    sunImageView.pa_top.equalTo(.CenterY, ofView: self).offset(12).install()
+    sunImageView.pa_top.equalTo(.CenterY, ofView: self).offset(sdp2dp(12)).install()
   }
   
   func setupAttrs(){
@@ -83,7 +85,8 @@ class PunchButtonView : UIButton{
   }
   
   override func intrinsicContentSize() -> CGSize {
-    return Images.Oval_button_bg.image.size
+    let size = Images.Oval_button_bg.image.size
+    return CGSize(width: sdp2dp(size.width), height: sdp2dp(size.height))
   }
 }
 
