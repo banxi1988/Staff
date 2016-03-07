@@ -51,6 +51,7 @@
 		3EFDB7111C8AF03800156993 /* StoryboardScence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFDB70F1C8AF03800156993 /* StoryboardScence.swift */; };
 		3EFDB7131C8BB4CE00156993 /* PunchButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFDB7121C8BB4CE00156993 /* PunchButtonView.swift */; };
 		3EFDB7151C8C68E900156993 /* ArtProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFDB7141C8C68E900156993 /* ArtProgressView.swift */; };
+		3EFDB7171C8D5B2100156993 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFDB7161C8D5B2100156993 /* AboutViewController.swift */; };
 		8DE52F10ADADBE8E40D52A63 /* Pods_StaffUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F58759C596F87287A8EB44 /* Pods_StaffUITests.framework */; };
 		9B60226793423FE20F15045C /* Pods_Staff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA287435A4A25BE4D000B23 /* Pods_Staff.framework */; };
 		E77DE59392C43990D347928C /* Pods_StaffTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A4846A3A5240BD5C35BE1C /* Pods_StaffTests.framework */; };
@@ -128,6 +129,7 @@
 		3EFDB70F1C8AF03800156993 /* StoryboardScence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScence.swift; sourceTree = "<group>"; };
 		3EFDB7121C8BB4CE00156993 /* PunchButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PunchButtonView.swift; sourceTree = "<group>"; };
 		3EFDB7141C8C68E900156993 /* ArtProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtProgressView.swift; sourceTree = "<group>"; };
+		3EFDB7161C8D5B2100156993 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		3FA287435A4A25BE4D000B23 /* Pods_Staff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Staff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F58759C596F87287A8EB44 /* Pods_StaffUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StaffUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F0F23BC7070BB38B1443122 /* Pods-StaffTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StaffTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StaffTests/Pods-StaffTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				3E21051C1C89301B004A4EC9 /* CompanyRegionViewController.swift */,
 				3E21051E1C89655E004A4EC9 /* NotificationSettingsViewController.swift */,
 				3E7C57091C8AC15800B175D7 /* ArtClockViewController.swift */,
+				3EFDB7161C8D5B2100156993 /* AboutViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				3E7C570A1C8AC15800B175D7 /* ArtClockViewController.swift in Sources */,
 				3EA1709A1C8538CE008FA446 /* SQLite+JSON.swift in Sources */,
 				3E91CA611C86D0010065CA49 /* SettingsViewController.swift in Sources */,
+				3EFDB7171C8D5B2100156993 /* AboutViewController.swift in Sources */,
 				3E91CA631C86D8390065CA49 /* AppUserDefaults.swift in Sources */,
 				3EA1709D1C8539B3008FA446 /* ClockRecord.swift in Sources */,
 				3E898D141C8596D800152D56 /* ClockRecordListViewController.swift in Sources */,

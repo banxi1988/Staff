@@ -87,6 +87,14 @@ class SettingsViewController : UITableViewController {
     return cell
   }()
   
+  lazy var aboutCell: RightDetailCell = {
+    let cell = RightDetailCell()
+    cell.textLabel?.text = "关于"
+    cell.detailTextLabel?.text = ""
+    cell.staticHeight = 50
+    return cell
+  }()
+  
   
   lazy var companyRegion = AppUserDefaults.companyRegion ?? presetCompanyLoc
   
@@ -96,7 +104,7 @@ class SettingsViewController : UITableViewController {
     navigationItem.title = title
    
     staticAdapter.bindTo(tableView)
-    staticAdapter.appendContentsOf([work_durationCell,company_regionCell,notifyCell])
+    staticAdapter.appendContentsOf([work_durationCell,company_regionCell,notifyCell,aboutCell])
     staticAdapter.didSelectCell = { cell,index in
       self.didTapCell(cell)
     }
@@ -126,6 +134,9 @@ class SettingsViewController : UITableViewController {
     case notifyCell:
         let vc = NotificationSettingsViewController()
         showViewController(vc, sender: self)
+    case aboutCell:
+      let vc = AboutViewController()
+      showViewController(vc, sender: self)
     default:break
     }
   }
