@@ -94,7 +94,7 @@ func friendlyTimeDuration(interval:NSTimeInterval) -> String{
      if minutes == 0{
         return "\(hours) 小时"
      }else{
-        return "\(hours) 小时, \(minutes) 分钟"
+        return "\(hours):\(minutes)"
      }
   }
   

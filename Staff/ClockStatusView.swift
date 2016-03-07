@@ -143,7 +143,7 @@ class ClockStatusView : UIView  ,BXBindable {
     }
    
     worked_timeText.font = UIFont.boldSystemFontOfSize(sdp2dp(40))
-    
+    worked_timeText.textColor = AppColors.accentColor
  
     need_timeLabel.textAlignment = .Right
     need_timeText.textAlignment = .Right

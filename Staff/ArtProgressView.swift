@@ -16,7 +16,8 @@ class ArtProgressView:UIView{
   lazy var annularLayer  :  CAGradientLayer = {
     let annularLayer = CAGradientLayer()
     self.layer.addSublayer(annularLayer)
-    let colors :[CGColorRef] = [UIColor.redColor(),UIColor.orangeColor(),UIColor.yellowColor(), UIColor.greenColor(),UIColor.greenColor(), UIColor.greenColor()].map{$0.CGColor}
+//    let colors :[CGColorRef] = [UIColor.redColor(),UIColor.orangeColor(),UIColor.yellowColor(), UIColor.greenColor(),UIColor.greenColor(), UIColor.greenColor()].map{$0.CGColor}
+    let colors:[CGColorRef] = Repeat(count: 6, repeatedValue: AppColors.accentColor).map{$0.CGColor}
     let locations = [0,3,6,8,9,12].map{ CGFloat($0) / 12.0 }
     annularLayer.colors = colors
     annularLayer.locations = locations
