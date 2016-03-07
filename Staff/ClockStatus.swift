@@ -91,10 +91,11 @@ func friendlyTimeDuration(interval:NSTimeInterval) -> String{
   default:
      let hours = seconds / 3600
     let minutes = (seconds % 3600) / 60
+     let minutesStr = String(format: "%02d", minutes)
      if minutes == 0{
         return "\(hours) 小时"
      }else{
-        return "\(hours):\(minutes)"
+        return "\(hours):\(minutesStr)"
      }
   }
   
